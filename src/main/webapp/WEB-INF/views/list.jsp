@@ -3,69 +3,48 @@
 <%@ page import="com.spring.board.BoardDAO" %>
 <%@ page import="com.spring.board.BoardVO" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>free board</title>
-    <style>
-        #list {
-            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-        #list td, #list th {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align:center;
-        }
-        #list tr:nth-child(even){background-color: #f2f2f2;}
-        #list tr:hover {background-color: #ddd;}
-        #list th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: center;
-            background-color: #006bb3;
-            color: white;
-        }
-    </style>
-    <script>
-        function delete_ok(id){
-            var a = confirm("정말로 삭제하겠습니까?");
-            if(a) location.href='deleteok/' + id;
-        }
-    </script>
-</head>
-<body>
-<h1>게시판</h1>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>BOARD</title>
+        <script>
+            function delete_ok(id){
+                var a = confirm("delete for real?");
+                if(a) location.href='deleteok/' + id;
+            }
+        </script>
+    </head>
 
-<br/><button type="button" onclick="location.href='../login/logout'">logout</button>
+    <body>
+        <h1>list</h1>
+        <br/><button type="button" onclick="location.href='../login/logout'">logout</button>
 
-<table id="list" width="90%">
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Writer</th>
-        <th>Content</th>
-        <td>Regdate</td>
-        <th>Topic</th>
-        <th>Edit</th>
-        <th>Delete</th>
-    </tr>
-<c:forEach items="${list}" var="u">
-    <tr>
-        <td>${u.seq}</td>
-        <td>${u.title}</td>
-        <td>${u.writer}</td>
-        <td>${u.content}</td>
-        <td>${u.regdate}</td>
-        <td>${u.topic}</td>
-        <td><a href="editform/${u.seq}">글수정</a></td>
-        <td><a href="javascript:delete_ok('${u.seq}')">글삭제</a></td>
-    </tr>
-</c:forEach>
-</table>
-<br/><button type="button" onclick="location.href='add'">새글쓰기</button>
-</body>
+        <table id="list" width="90%" border="1">
+            <tr>
+                <th>id</th>
+                <th>title</th>
+                <th>writer</th>>
+                <th>content</th>
+                <td>regdate</td>
+                <th>edit</th>
+                <th>delete</th>
+            </tr>
 
+        <c:forEach items="${list}" var="u">
+            <tr>
+                <td>${u.seq}</td>
+                <td>${u.title}</td>
+                <td>${u.writer}</td>
+                <td>${u.content}</td>
+                <td>${u.regdate}</td>
+                <td><a href="editform/${u.seq}">edit</a></td>
+                <td><a href="javascript:delete_ok('${u.seq}')">delete</a></td>
+            </tr>
+        </c:forEach>
+        </table><br/>
+
+        <button type="button" onclick="location.href='add'">new post</button>
+    </body>
 </html>

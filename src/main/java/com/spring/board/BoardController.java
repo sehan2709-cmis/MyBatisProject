@@ -26,27 +26,30 @@ public class BoardController {
 
     @RequestMapping(value = "/addok",method = RequestMethod.POST)
     public String addPostOK(BoardVO vo){
-        System.out.println("데이터 확인" + vo.getTitle());
+        System.out.println("data: " + vo.getTitle());
         int i = boardService.insertBoard(vo);
+
         if(i==0)
-            System.out.println("데이터 추가 실패");
+            System.out.println("data add fail");
         else
-            System.out.println("데이터 추가 성공!!");
+            System.out.println("data add success");
         return "redirect:list";
     }
+
     @RequestMapping(value = "/editform/{id}",method = RequestMethod.GET)
     public String editPost(@PathVariable("id") int id,Model model){
         BoardVO boardVO = boardService.getBoard(id);
         model.addAttribute("boardVO",boardVO);
         return "editform";
     }
+
     @RequestMapping(value = "/editok",method = RequestMethod.POST)
     public String editPostOK(BoardVO vo){
         int i = boardService.updateBoard(vo);
-        if(i==0)
-            System.out.println("데이터 수정 실패");
+        if(i == 0)
+            System.out.println("data edit fail");
         else
-            System.out.println("데이터 수정 성공!!!");
+            System.out.println("data edit success");
         return "redirect:list";
     }
 
@@ -54,13 +57,9 @@ public class BoardController {
     public String deletePost(@PathVariable("id") int id){
         int i = boardService.deleteBoard(id);
         if(i==0)
-            System.out.println("데이터 삭제 실패");
+            System.out.println("data delete fail");
         else
-            System.out.println("데이터 삭제 성공!!!");
+            System.out.println("data delete success");
         return "redirect:../list";
     }
-
-
-
-
 }

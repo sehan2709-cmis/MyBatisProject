@@ -8,6 +8,7 @@ import java.util.List;
 public class BoardServiceImpl implements BoardService{
     @Autowired
     BoardDAO boardDAO;
+    
     @Override
     public int insertBoard(BoardVO vo){
         return boardDAO.insertBoard(vo);
@@ -27,6 +28,7 @@ public class BoardServiceImpl implements BoardService{
     public BoardVO getBoard(int seq){
         return boardDAO.getBoard(seq);
     }
+
     @Override
     public List<BoardVO> getBoardList(){
         return boardDAO.getBoardList();

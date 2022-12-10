@@ -4,15 +4,13 @@ import java.util.Date;
 
 public class BoardVO {
     private int seq;
-    private String category;
     private String title;
     private String writer;
     private String content;
     private Date regdate;
     private int cnt;
-    private String topic;
 
-    public int getSeq(){
+    public int getSeq() {
         return seq;
     }
 
@@ -26,30 +24,6 @@ public class BoardVO {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getCnt() {
-        return cnt;
-    }
-
-    public void setCnt(int cnt) {
-        this.cnt = cnt;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public Date getRegdate() {
-        return regdate;
-    }
-
-    public void setRegdate(Date regdate) {
-        this.regdate = regdate;
     }
 
     public String getWriter() {
@@ -68,11 +42,19 @@ public class BoardVO {
         this.content = content;
     }
 
-    public String getTopic() {
-        return topic;
+    public Date getRegdate() {
+        return regdate;
     }
 
-    public void setTopic(String topic) {
-        this.topic = topic;
+    public void setRegdate(Date regdate) {
+        this.regdate = regdate;
+    }
+
+    public int getCnt() {
+        return cnt;
+    }
+
+    public void setCnt(int cnt) {
+        this.cnt = cnt;
     }
 }
